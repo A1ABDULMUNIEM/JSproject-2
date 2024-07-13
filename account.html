@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Project</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/user.css" rel="stylesheet">
+</head>
+
+<body class="userAccount">
+    <div id="nav-placeholder"></div> 
+
+    <div class="container-fluid userAccount">
+        <h1 id="your-acc"><center>Your Account Information</center></h1>
+        <div class="row info_div">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body info_form">   
+                        <div class="loginMsg"></div>
+                        <form method="post" class="updateAccount" action="#">
+                            <label for="username">User Name:</label>
+                            <input type="text" id="username" name="username" class="form-control" readonly>
+                            <br>
+                            <h3>Personal Information</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="fname">First Name:</label>
+                                    <input type="text" id="fname" name="fname" class="form-control">
+                                    <br>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="lname">Last Name:</label>
+                                    <input type="text" id="lname" name="lname" class="form-control">
+                                    <br>
+                                </div>
+                            </div>
+                            <label for="phone">Phone Number:</label>
+                            <input type="tel" id="phone" name="phone" class="form-control">
+                            <br>
+                            <label for="email">Email Address:</label>
+                            <input type="email" id="email" name="email" class="form-control">
+                            <br>
+                            <h3>Address</h3>
+                            <label for="address">Street Address:</label>
+                            <input type="text" id="address" name="address" class="form-control">
+                            <br>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <label for="city">City:</label>
+                                    <input type="text" id="city" name="city" class="form-control">
+                                </div>
+                            </div>
+                            <br>
+                            <p><button type="submit" class="btn btn-lg btn-success">Update Account</button></p>
+                        </form>
+                    </div>
+                </div>        
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/user.js"></script>
+</body>
+
+</html>

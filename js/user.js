@@ -26,15 +26,15 @@ class User {
     });
 
     if (user) {
-      // If user is found in local storage
+      // If user is found in local storage :)
       localStorage.setItem("user", JSON.stringify(user));
       window.location.href = "/index.html";
     } else {
-      // If user is not found in local storage, check the JSON file
+      // If user is not found in local storage, check the JSON file lol :)
       fetch(this.apiUrl + "users")
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          console.log(data); // 3ayez a check el data :)
           data.users.forEach((u) => {
             if (u.username === username && u.password === password) {
               user = u;

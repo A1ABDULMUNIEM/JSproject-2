@@ -15,7 +15,7 @@ class User {
   }
 
   doLogin(username, password) {
-    const users = this.getAllUsers();
+    const users = this.getAllUsers(); // from local storge
     let user = null;
 
     // Check in local storage first
@@ -34,14 +34,14 @@ class User {
       fetch(this.apiUrl + "users")
         .then((res) => res.json())
         .then((data) => {
-          console.log(data); // 3ayez a check el data :)
+          console.log(data); // 3ayez a check el user :)
           data.users.forEach((u) => {
             if (u.username === username && u.password === password) {
               user = u;
             }
           });
           if (user) {
-            localStorage.setItem("user", JSON.stringify(user));
+            localStorage.setItem("user", JSON.stringify(user)); // save the user in the local storage under the key user
             window.location.href = "/index.html";
           } else {
             document.querySelector(".loginMsg").innerHTML =
@@ -71,26 +71,26 @@ class User {
     }
   }
 
-  // Function to get all users from local storage
+  //to get all users from local storage
   getAllUsers() {
     return JSON.parse(localStorage.getItem("users")) || [];
   }
 
-  // Function to save a user to local storage
+  //to save a user to local storage
   saveUser(user) {
     const users = this.getAllUsers();
     users.push(user);
     localStorage.setItem("users", JSON.stringify(users));
   }
 
-  // Function to update a user in local storage
+  //to update a user in local storage
   updateUser(updatedUser) {
     const users = this.getAllUsers();
     const index = users.findIndex(
       (user) => user.username === updatedUser.username
     );
     if (index !== -1) {
-      // Preserve the existing password if it's not provided in the updatedUser object
+      // Preserve the existing password :)
       const existingUser = users[index];
       updatedUser.password = existingUser.password;
 
@@ -100,14 +100,7 @@ class User {
     }
   }
 
-  // Function to delete a user from local storage
-  deleteUser(username) {
-    const users = this.getAllUsers();
-    const updatedUsers = users.filter((user) => user.username !== username);
-    localStorage.setItem("users", JSON.stringify(updatedUsers));
-  }
-
-  // Function to validate user input
+  // to validate user input
   validateUserInput(user) {
     const {
       username,
@@ -121,7 +114,7 @@ class User {
     if (!username) return "Username is required.";
     if (!firstName) return "First name is required.";
     if (!lastName) return "Last name is required.";
-    if (!phone || isNaN(phone)) return "Valid phone number is required.";
+    if (!phone) return "Valid phone number is required."; // || isNaN(phone)) if I want only numbers
     if (!email || !/^\S+@\S+\.\S+$/.test(email))
       return "Valid email address is required.";
     if (!address) return "Street address is required.";
@@ -130,6 +123,8 @@ class User {
     return null;
   }
 }
+
+//--------------------------//-------------------//-------------
 
 document.addEventListener("DOMContentLoaded", (event) => {
   const userClass = new User();
@@ -157,7 +152,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
           address: document.getElementById("address").value,
           city: document.getElementById("city").value,
         },
-        password: existingUser.password,
+        password: existingUser.password, //prevent the existing password
       };
 
       // Validate the input
